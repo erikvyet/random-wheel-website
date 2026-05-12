@@ -10,8 +10,8 @@ function Questionaire() {
     const question1: Question = {
         question: "Con vật nào có thể bay?",
         options: [
-            { label: "Chim", icon: <Box component={"img"} src={"/src/assets/images/bird.png"}/>, innerColor: InnerColor.green, outerColor: OuterColor.green },
-            { label: "Cá", icon: <Box component={"img"} src={"/src/assets/images/fish.png"}/>, innerColor: InnerColor.orange, outerColor: OuterColor.orange }
+            { label: "Chim", icon: <Box className="size-full object-contain" component={"img"} src={"/src/assets/images/bird.png"}/>, innerColor: InnerColor.green, outerColor: OuterColor.green },
+            { label: "Cá", icon: <Box className="size-full object-contain" component={"img"} src={"/src/assets/images/fish.png"}/>, innerColor: InnerColor.orange, outerColor: OuterColor.orange }
         ],
         answer: 0
     }
@@ -36,7 +36,7 @@ function Questionaire() {
 
     return (
         <QuestionaireContext.Provider value={{ questions, activeQuestion, setActiveQuestion }}>
-            <Container className="min-h-screen h-screen max-h-max">
+            <Container className="md:w-3/4! lg:w-4/5! min-h-screen h-screen max-h-max" maxWidth={false}>
                 {activeQuestion < questions.length && (
                     <QuestionBox 
                         question={questions[activeQuestion].question} 

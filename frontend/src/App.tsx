@@ -5,6 +5,7 @@ import Questionaire from './pages/Questionaire';
 import Prize from './pages/Prize';
 import ParticipantManager from './pages/ParticipantManager';
 import AdminLayout from './layouts/AdminLayout';
+import Result from './pages/Result';
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                     <Route path="/" element={<Register/>}/>
                     <Route path="/questionaire" element={<Questionaire/>}/>
                     <Route path="/prize" element={<Prize/>} />
+                    <Route path="/result" element={<Result/>} />
                 </Route>
                 <Route path="/admin" element={<AdminLayout/>}>
                     <Route path="participant" element={<ParticipantManager/>}/>

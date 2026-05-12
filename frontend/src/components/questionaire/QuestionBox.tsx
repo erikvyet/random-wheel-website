@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Grid, Stack, Typography } from "@mui/material";
 import type { Question } from "../../types/Question";
 import { useContext } from "react";
 import { QuestionaireContext } from "../../contexts/QuestionaireContext";
@@ -17,18 +17,22 @@ function QuestionBox({ question, options, answer }: Question) {
     return (
         <Stack className="size-full items-center">
             <Box className="flex-1/3 grow-0 shrink-0 place-content-center text-center">
-                <Typography className="font-semibold!" variant="h3">{question}</Typography>
+                <Typography className="font-semibold! text-4xl! lg:text-5xl! xl:text-6xl! 2xl:text-8xl! leading-snug">{question}</Typography>
             </Box>
-            <Stack className="w-full flex-9/20 grow-0 shrink-0 flex-wrap justify-center items-center gap-4" direction={"row"}>
+            <Grid className="w-full flex-1/2 grow-0 shrink-0 justify-center items-center" container spacing={2}>
                 {options.map((option, index) =>
-                    <Box className={`flex-[220px] h-full p-1 grow-0 shrink-0 shadow-md shadow-zinc-400 rounded-2xl cursor-pointer hover:outline-4 ${option.outerColor} transition-discrete duration-200 ease-linear`} key={index} onClick={() => handleAnswerClick(index)}>
-                        <Box className={`size-full rounded-xl place-content-center text-white ${option.innerColor}`}>
-                            {option.icon !== undefined && <Box className="size-30 justify-self-center">{option.icon}</Box>}
-                            <Typography className="justify-self-center font-semibold!" variant="h5">{option.label}</Typography>
+                    <Grid className={`h-1/2 md:h-3/5 lg:h-3/4 p-1 lg:p-1.5 2xl:p-3 rounded-2xl cursor-pointer ${option.outerColor}`} size={{ xs: 6, md: 3 }} key={index} onClick={() => handleAnswerClick(index)}>
+                        <Box className={`size-full place-content-center rounded-xl ${option.innerColor}`}>
+                            {option.icon !== undefined && (
+                                <Box className="aspect-square h-1/2 w-full">
+                                    {option.icon}
+                                </Box>
+                            )}
+                            <Typography className="text-zinc-100 justify-self-center text-center text-2xl! md:text-3xl! lg:text-4xl! xl:text-5xl! 2xl:text-7xl! font-semibold!">{option.label}</Typography>
                         </Box>
-                    </Box>
+                    </Grid>
                 )}
-            </Stack>
+            </Grid>
         </Stack>
     );
 }
